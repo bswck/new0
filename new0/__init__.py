@@ -22,26 +22,8 @@ def can_use_pyrepl() -> bool:
     return flag
 
 
-def setup_console(lib_path: StrPath | None = None) -> Python0Console:
-    sys.audit("cpython.run_stdin")
-
-    return Python0Console(
-        {
-            key: globals()[key]
-            for key in (
-                "__name__",
-                "__package__",
-                "__loader__",
-                "__spec__",
-                "__builtins__",
-                "__file__",
-            )
-        },
-        lib_path=lib_path,
-    )
-
-
 def run_console(console: Python0Console) -> None:
+    sys.audit("cpython.run_stdin")
     interactive_hook = getattr(sys, "__interactivehook__", None)
 
     if interactive_hook is not None:

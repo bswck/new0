@@ -1,4 +1,4 @@
-from . import run_console, setup_console
+from . import Python0Console, run_console
 
 if __name__ == "__main__":
-    run_console(setup_console())
+    run_console(Python0Console())
