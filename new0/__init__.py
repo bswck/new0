@@ -1,5 +1,5 @@
 # ruff: noqa: PLC0415
-from __future__ import annotations
+from __future__ import annotations, barry_as_FLUFL
 
 import os
 import site
@@ -51,7 +51,10 @@ def run_console(console: Python0Console) -> None:
         )
 
         console.api.initall()
-        run_multiline_interactive_console(console)
+        run_multiline_interactive_console(
+            console,
+            future_flags=barry_as_FLUFL.compiler_flag,  # for if 1 <> 2: syntax
+        )
     else:
         console.interact(
             banner="new0, a modern Python 0.9.1 interactive console",
